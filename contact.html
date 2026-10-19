@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTACT & TEST RIDES — HARLEY-DAVIDSON IRONCLAD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-shield-svg" viewBox="0 0 24 24">
+          <polygon points="12 2 21 6.5 21 17.5 12 22 3 17.5 3 6.5 12 2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <span>HARLEY-DAVIDSON</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="motorcycles.html" class="nav-link">MOTORCYCLES</a>
+        <a href="index.html#configurator" class="nav-link">BUILD YOUR BIKE</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+        <a href="stories.html" class="nav-link">STORIES</a>
+        <a href="contact.html" class="nav-link active">CONTACT</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm btn-auth-trigger">LOGIN</button>
+        <a href="index.html#configurator" class="btn btn-primary btn-sm">BUILD YOUR BIKE</a>
+        <button class="hamburger-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: calc(var(--nav-height) + 2rem); min-height: 80vh;">
+    <div class="container" style="padding-bottom: 6rem;">
+      <div style="max-width: 750px; margin: 3rem auto 4rem auto; text-align: center;">
+        <div class="section-tag">COMMUNICATIONS DISPATCH // MILWAUKEE HQ</div>
+        <h1 class="section-heading">LET'S TALK<br>MOTORCYCLES.</h1>
+        <p class="section-sub" style="margin: 0 auto;">
+          Contact our motorcycle concierge for test rides, technical specifications, and factory custom ordering.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Left Column -->
+        <div class="contact-info-panel">
+          <div class="contact-info-block">
+            <h4>MILWAUKEE HEADQUARTERS</h4>
+            <p>Harley-Davidson Motor Company<br>3700 W Juneau Ave<br>Milwaukee, WI 53208 USA</p>
+          </div>
+          <div class="contact-info-block">
+            <h4>RIDER SUPPORT DESK</h4>
+            <p class="tech-cyan" style="font-family: var(--font-tech);">1-800-258-2464<br>MON — FRI: 08:00 - 18:00 CST</p>
+          </div>
+          <div class="contact-info-block">
+            <h4>AUTHORIZED TEST RIDES</h4>
+            <p>Valid motorcycle endorsement and certified helmet required for all closed-circuit and highway demonstration rides.</p>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="contact-form-panel hud-corner">
+          <form id="contact-form" class="contact-form">
+            <div class="form-row-2col">
+              <div class="form-field">
+                <label for="contact-name" class="form-label">Full Name *</label>
+                <input type="text" id="contact-name" class="form-input" required placeholder="John Rider">
+              </div>
+              <div class="form-field">
+                <label for="contact-email" class="form-label">Email Address *</label>
+                <input type="email" id="contact-email" class="form-input" required placeholder="rider@domain.com">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-subject" class="form-label">Inquiry Purpose</label>
+              <select id="contact-subject" class="form-input">
+                <option value="test-ride">Schedule an Ironclad Test Ride</option>
+                <option value="config-build">Consult on Custom Motorcycle Build</option>
+                <option value="dealer-network">Dealership Network & Showroom Inquiry</option>
+                <option value="general">General Brand & Heritage Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message" class="form-label">Message *</label>
+              <textarea id="contact-message" class="form-input" required placeholder="Tell us about your machine requirements or questions..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              TRANSMIT MESSAGE
+            </button>
+
+            <div class="backend-note">
+              <strong>NOTE:</strong> Client-side demonstration. Actual email delivery requires an active SMTP / REST API backend.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <p class="tech-label">&copy; 2026 HARLEY-DAVIDSON MOTOR COMPANY — COMMUNICATIONS</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

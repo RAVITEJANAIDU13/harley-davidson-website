@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOTORCYCLE FLEET — HARLEY-DAVIDSON IRONCLAD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-shield-svg" viewBox="0 0 24 24">
+          <polygon points="12 2 21 6.5 21 17.5 12 22 3 17.5 3 6.5 12 2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <span>HARLEY-DAVIDSON</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="motorcycles.html" class="nav-link active">MOTORCYCLES</a>
+        <a href="index.html#configurator" class="nav-link">BUILD YOUR BIKE</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+        <a href="stories.html" class="nav-link">STORIES</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm btn-auth-trigger">LOGIN</button>
+        <a href="index.html#configurator" class="btn btn-primary btn-sm">BUILD YOUR BIKE</a>
+        <button class="hamburger-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-nav-drawer">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="motorcycles.html" class="nav-link">MOTORCYCLES</a>
+    <a href="index.html#configurator" class="nav-link">BUILD YOUR BIKE</a>
+    <a href="about.html" class="nav-link">ABOUT</a>
+    <a href="stories.html" class="nav-link">STORIES</a>
+    <a href="contact.html" class="nav-link">CONTACT</a>
+  </div>
+
+  <main style="padding-top: calc(var(--nav-height) + 2rem); min-height: 85vh;">
+    <div class="container">
+      <div style="text-align: center; max-width: 750px; margin: 2rem auto 4rem auto;">
+        <div class="section-tag orange">FLEET SPECIFICATION // 2026 EDITIONS</div>
+        <h1 class="section-heading">COMPLETE<br>IRON LINEUP</h1>
+        <p class="section-sub" style="margin: 0 auto;">
+          Explore each machine in our private performance stable. Built with uncompromised American engineering, high-torque V-Twins, and premium dark industrial finishes.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="collection-filters" style="justify-content: center; margin-bottom: 3.5rem;">
+        <button class="filter-btn active" data-filter="all">ALL MOTORCYCLES (04)</button>
+        <button class="filter-btn" data-filter="SPORT">SPORT</button>
+        <button class="filter-btn" data-filter="CRUISER">CRUISER</button>
+        <button class="filter-btn" data-filter="TOURING">TOURING</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="motorcycles-grid" style="margin-bottom: 6rem;">
+        <!-- Sportster S -->
+        <article class="bike-card hud-corner" data-category="SPORT">
+          <div class="bike-card-top">
+            <span class="bike-card-number">01. SPORTSTER S</span>
+            <span class="bike-card-category">SPORT</span>
+          </div>
+          <div class="bike-card-image-wrap">
+            <img src="assets/images/hero-sportster-s.jpg" alt="Sportster S" class="bike-card-img">
+          </div>
+          <div class="bike-card-body">
+            <h3 class="bike-card-title">SPORTSTER S</h3>
+            <p class="bike-card-desc">121 HP Revolution Max 1250T liquid-cooled V-Twin. Cornering ABS, 4-inch TFT gauge, and high-mount bronze dual exhaust.</p>
+            <div class="bike-card-specs-row">
+              <div class="spec-cell"><div class="spec-cell-label">Power</div><div class="spec-cell-val">121 HP</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Torque</div><div class="spec-cell-val">94 FT-LB</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Weight</div><div class="spec-cell-val">502 LBS</div></div>
+            </div>
+            <div class="bike-card-actions">
+              <button class="btn btn-outline btn-discover-specs" data-model="sportster" style="flex: 1;">DISCOVER SPECS</button>
+              <a href="index.html#configurator" class="btn btn-primary" style="flex: 1;">BUILD BIKE</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Fat Boy 114 -->
+        <article class="bike-card hud-corner" data-category="CRUISER">
+          <div class="bike-card-top">
+            <span class="bike-card-number">02. FAT BOY 114</span>
+            <span class="bike-card-category">CRUISER</span>
+          </div>
+          <div class="bike-card-image-wrap">
+            <img src="assets/images/fat-boy-114.jpg" alt="Fat Boy 114" class="bike-card-img">
+          </div>
+          <div class="bike-card-body">
+            <h3 class="bike-card-title">FAT BOY 114</h3>
+            <p class="bike-card-desc">The original muscle cruiser. Solid cast Lakester disc wheels, massive 240mm rear tire, and Milwaukee-Eight 114 V-Twin power.</p>
+            <div class="bike-card-specs-row">
+              <div class="spec-cell"><div class="spec-cell-label">Power</div><div class="spec-cell-val">94 HP</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Torque</div><div class="spec-cell-val">119 FT-LB</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Weight</div><div class="spec-cell-val">699 LBS</div></div>
+            </div>
+            <div class="bike-card-actions">
+              <button class="btn btn-outline btn-discover-specs" data-model="fatboy" style="flex: 1;">DISCOVER SPECS</button>
+              <a href="index.html#configurator" class="btn btn-primary" style="flex: 1;">BUILD BIKE</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Nightster -->
+        <article class="bike-card hud-corner" data-category="SPORT">
+          <div class="bike-card-top">
+            <span class="bike-card-number">03. NIGHTSTER</span>
+            <span class="bike-card-category">SPORT</span>
+          </div>
+          <div class="bike-card-image-wrap">
+            <img src="assets/images/nightster.jpg" alt="Nightster" class="bike-card-img">
+          </div>
+          <div class="bike-card-body">
+            <h3 class="bike-card-title">NIGHTSTER</h3>
+            <p class="bike-card-desc">Agile roadster agility powered by the Revolution Max 975T engine. Low center of gravity with under-seat fuel cell.</p>
+            <div class="bike-card-specs-row">
+              <div class="spec-cell"><div class="spec-cell-label">Power</div><div class="spec-cell-val">90 HP</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Torque</div><div class="spec-cell-val">70 FT-LB</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Weight</div><div class="spec-cell-val">481 LBS</div></div>
+            </div>
+            <div class="bike-card-actions">
+              <button class="btn btn-outline btn-discover-specs" data-model="nightster" style="flex: 1;">DISCOVER SPECS</button>
+              <a href="index.html#configurator" class="btn btn-primary" style="flex: 1;">BUILD BIKE</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Street Glide -->
+        <article class="bike-card hud-corner" data-category="TOURING">
+          <div class="bike-card-top">
+            <span class="bike-card-number">04. STREET GLIDE</span>
+            <span class="bike-card-category">TOURING</span>
+          </div>
+          <div class="bike-card-image-wrap">
+            <img src="assets/images/street-glide.jpg" alt="Street Glide" class="bike-card-img">
+          </div>
+          <div class="bike-card-body">
+            <h3 class="bike-card-title">STREET GLIDE</h3>
+            <p class="bike-card-desc">The cross-country grand touring benchmark. Batwing fairing, Boom! Box GTS infotainment, hard saddlebags, and highway comfort.</p>
+            <div class="bike-card-specs-row">
+              <div class="spec-cell"><div class="spec-cell-label">Power</div><div class="spec-cell-val">93 HP</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Torque</div><div class="spec-cell-val">118 FT-LB</div></div>
+              <div class="spec-cell"><div class="spec-cell-label">Fuel</div><div class="spec-cell-val">6.0 GAL</div></div>
+            </div>
+            <div class="bike-card-actions">
+              <button class="btn btn-outline btn-discover-specs" data-model="streetglide" style="flex: 1;">DISCOVER SPECS</button>
+              <a href="index.html#configurator" class="btn btn-primary" style="flex: 1;">BUILD BIKE</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-container hud-corner">
+      <button class="modal-close-btn">&times;</button>
+      <div class="modal-content-wrap" id="product-modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <p class="tech-label">&copy; 2026 HARLEY-DAVIDSON MOTOR COMPANY — IRONCLAD FLEET</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

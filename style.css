@@ -1,0 +1,2176 @@
+/* ==========================================================================
+   HARLEY-DAVIDSON — IRONCLAD
+   Cinematic Motorcycle Experience
+   Inspired by REDLINE Racing Editorial Aesthetic
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Color System */
+  --bg-primary: #050505;
+  --bg-secondary: #0B0C0E;
+  --bg-card: #111316;
+  --bg-card-hover: #16191E;
+  --bg-glass: rgba(11, 12, 14, 0.75);
+  
+  --text-primary: #F5F5F5;
+  --text-secondary: #92969C;
+  --text-muted: #5A5E66;
+  
+  --accent-orange: #F15A24;
+  --accent-orange-glow: rgba(241, 90, 36, 0.4);
+  --accent-orange-subtle: rgba(241, 90, 36, 0.12);
+  
+  --accent-cyan: #38DDE8;
+  --accent-cyan-glow: rgba(56, 221, 232, 0.35);
+  --accent-cyan-subtle: rgba(56, 221, 232, 0.1);
+  
+  --border-subtle: #2A2D31;
+  --border-light: #3D4249;
+  --border-active: #F15A24;
+  
+  /* Typography */
+  --font-display: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-tech: 'Space Mono', monospace;
+  
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-base: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Container */
+  --max-width: 1440px;
+  --nav-height: 80px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(241, 90, 36, 0.03) 0%, transparent 60%),
+    radial-gradient(circle at 100% 50%, rgba(56, 221, 232, 0.02) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Subtle Film Grain Texture Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Typography Utility Classes
+   -------------------------------------------------------------------------- */
+.tech-label {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.tech-cyan {
+  color: var(--accent-cyan);
+}
+
+.tech-orange {
+  color: var(--accent-orange);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 1.25rem;
+}
+
+.section-tag::before,
+.section-tag::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--accent-cyan);
+  opacity: 0.6;
+}
+
+.section-tag.orange {
+  color: var(--accent-orange);
+}
+
+.section-tag.orange::before,
+.section-tag.orange::after {
+  background-color: var(--accent-orange);
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* REDLINE Industrial Bracket HUD */
+.hud-corner {
+  position: relative;
+}
+
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--accent-cyan);
+  pointer-events: none;
+}
+
+.hud-corner::before {
+  top: 0;
+  left: 0;
+  border-top: 1px solid var(--accent-cyan);
+  border-left: 1px solid var(--accent-cyan);
+}
+
+.hud-corner::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid var(--accent-cyan);
+  border-right: 1px solid var(--accent-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & Interactive Elements
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.8rem;
+  border-radius: 0px;
+  transition: all var(--transition-base);
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--accent-orange);
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(241, 90, 36, 0.25);
+  border: 1px solid var(--accent-orange);
+}
+
+.btn-primary:hover {
+  background-color: #ff6833;
+  box-shadow: 0 0 30px rgba(241, 90, 36, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 15px rgba(56, 221, 232, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-outline-orange {
+  background-color: transparent;
+  color: var(--accent-orange);
+  border: 1px solid var(--accent-orange);
+}
+
+.btn-outline-orange:hover {
+  background-color: var(--accent-orange);
+  color: #FFFFFF;
+  box-shadow: 0 0 25px rgba(241, 90, 36, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.7rem;
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Header & Navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background-color: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all var(--transition-base);
+}
+
+.site-header.scrolled {
+  height: 68px;
+  background-color: rgba(5, 5, 5, 0.95);
+  border-bottom-color: rgba(241, 90, 36, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.brand-shield-svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--accent-orange);
+  transition: transform var(--transition-base);
+}
+
+.brand-logo:hover .brand-shield-svg {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-orange);
+  transition: width var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.user-badge {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--accent-cyan);
+  background: var(--accent-cyan-subtle);
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  z-index: 1001;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: var(--transition-base);
+}
+
+.hamburger-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.mobile-nav-drawer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-drawer .nav-link {
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+}
+
+/* --------------------------------------------------------------------------
+   CINEMATIC HERO SECTION (Direct REDLINE Recreation)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding-top: calc(var(--nav-height) + 1rem);
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Overhead Spotlight Beam (Inspired by REDLINE screenshot) */
+.hero-spotlight {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: 
+    radial-gradient(ellipse 35% 70% at 50% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%),
+    radial-gradient(circle at 50% 45%, rgba(241, 90, 36, 0.08) 0%, transparent 60%);
+}
+
+.hero-vertical-beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(56, 221, 232, 0.4) 30%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-header-top {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.hero-division-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.hero-division-tag::before,
+.hero-division-tag::after {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--accent-cyan);
+  opacity: 0.7;
+}
+
+/* Giant Dominant REDLINE-Style Title */
+.hero-title-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.hero-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 11vw, 10.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-sub-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+.hero-sub-pill::before,
+.hero-sub-pill::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background-color: var(--accent-cyan);
+  opacity: 0.6;
+}
+
+/* HUD Lateral Brackets (Direct REDLINE Reference) */
+.hero-hud-left {
+  position: absolute;
+  top: 38%;
+  left: 4%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero-hud-right {
+  position: absolute;
+  top: 38%;
+  right: 4%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: right;
+}
+
+.hud-box {
+  padding: 0.6rem 1rem;
+  background: rgba(11, 12, 14, 0.6);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--accent-cyan);
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+
+.hud-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--accent-cyan);
+  border-left: 2px solid var(--accent-cyan);
+}
+
+.hud-box::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid var(--accent-cyan);
+  border-right: 2px solid var(--accent-cyan);
+}
+
+.hud-detail-line {
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+/* Center Motorcycle Showcase Stage */
+.hero-stage {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+  margin: 1rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-bike-frame {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  height: clamp(320px, 46vw, 540px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+}
+
+.hero-bike-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform-origin: center bottom;
+  transition: transform var(--transition-slow);
+}
+
+.hero-bike-frame:hover .hero-bike-img {
+  transform: scale(1.02);
+}
+
+/* Floor Glow & Studio Ground Shadow */
+.hero-bike-shadow {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 40px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 80%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Technical Badges Around the Bike */
+.hero-specs-badge {
+  position: absolute;
+  bottom: 12%;
+  z-index: 4;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  background: rgba(11, 12, 14, 0.85);
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-specs-badge.left {
+  left: 2%;
+}
+
+.hero-specs-badge.right {
+  right: 2%;
+}
+
+.hero-specs-badge span {
+  color: var(--accent-orange);
+}
+
+/* Hero Action CTAs */
+.hero-cta-group {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Bottom Status Bar (Direct REDLINE Reference) */
+.hero-status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(5, 5, 5, 0.95);
+  border-top: 1px solid var(--border-subtle);
+  padding: 0.85rem 2.5rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-orange);
+  box-shadow: 0 0 10px var(--accent-orange);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.status-divider {
+  color: var(--border-subtle);
+}
+
+.status-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   MOTORCYCLE COLLECTION SECTION
+   -------------------------------------------------------------------------- */
+.collection-section {
+  padding: 8rem 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.collection-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.collection-filters {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+}
+
+.filter-btn {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: var(--accent-orange);
+}
+
+.filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-orange);
+}
+
+/* Motorcycle Grid Cards */
+.motorcycles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.bike-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.bike-card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: rgba(241, 90, 36, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(241, 90, 36, 0.1);
+  transform: translateY(-4px);
+}
+
+.bike-card-top {
+  padding: 1.75rem 2rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bike-card-number {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+.bike-card-category {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(56, 221, 232, 0.3);
+  background: rgba(56, 221, 232, 0.05);
+}
+
+.bike-card-image-wrap {
+  width: 100%;
+  height: 320px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.bike-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-slow);
+}
+
+.bike-card:hover .bike-card-img {
+  transform: scale(1.06);
+}
+
+.bike-card-body {
+  padding: 0 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.bike-card-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.bike-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.bike-card-specs-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.75rem;
+}
+
+.spec-cell-label {
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.spec-cell-val {
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0.2rem;
+}
+
+.bike-card-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE MOTORCYCLE CONFIGURATOR ("BUILD YOUR MACHINE.")
+   -------------------------------------------------------------------------- */
+.configurator-section {
+  padding: 8rem 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.configurator-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 3rem;
+  margin-top: 3.5rem;
+  align-items: start;
+}
+
+/* Configurator Stage Left */
+.config-stage {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.config-stage-hud-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.config-model-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.config-category-badge {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-cyan);
+}
+
+.config-viewport {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 40vw, 460px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+}
+
+.config-bike-render {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.config-stage-hud-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.config-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.config-stat-label {
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.config-stat-value {
+  font-family: var(--font-tech);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+}
+
+/* Configurator Controls Right */
+.config-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.config-group-title {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.config-group-title span {
+  color: var(--accent-cyan);
+}
+
+/* Model Selector Pills */
+.model-pill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.model-pill {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  transition: all var(--transition-base);
+}
+
+.model-pill:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.model-pill.active {
+  border-color: var(--accent-orange);
+  background: var(--accent-orange-subtle);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Color Swatches */
+.color-swatches-grid {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color-swatch-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 0;
+  border: 2px solid var(--border-subtle);
+  position: relative;
+  transition: all var(--transition-base);
+  padding: 3px;
+}
+
+.color-swatch-btn:hover {
+  transform: scale(1.08);
+}
+
+.color-swatch-btn.active {
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 12px var(--accent-orange-glow);
+}
+
+.swatch-fill {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.swatch-black { background-color: #0d0e11; }
+.swatch-gray { background-color: #55585f; }
+.swatch-orange { background-color: #F15A24; }
+.swatch-red { background-color: #8b1111; }
+
+.active-color-name {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+/* Component Selectors (Seat, Handlebar, Wheel) */
+.custom-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.custom-select {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color var(--transition-base);
+}
+
+.custom-select:focus {
+  border-color: var(--accent-orange);
+}
+
+/* Accessories Checkboxes */
+.accessories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.accessory-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: border-color var(--transition-base);
+}
+
+.accessory-item:hover {
+  border-color: var(--border-light);
+}
+
+.accessory-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.accessory-checkbox {
+  accent-color: var(--accent-orange);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.accessory-price {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  color: var(--accent-orange);
+}
+
+/* Configurator Pricing & Actions */
+.config-pricing-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.config-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.config-price-label {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.config-total-price {
+  font-family: var(--font-tech);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.config-disclaimer {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+.config-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   ABOUT HARLEY-DAVIDSON SECTION
+   -------------------------------------------------------------------------- */
+.about-section {
+  padding: 8rem 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.about-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual-col {
+  position: relative;
+}
+
+.about-image-frame {
+  position: relative;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  background-color: var(--bg-card);
+}
+
+.about-image-frame img {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.about-image-frame:hover img {
+  transform: scale(1.04);
+}
+
+.about-image-badge {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background: rgba(5, 5, 5, 0.9);
+  border: 1px solid var(--border-subtle);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-cyan);
+}
+
+.about-editorial-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-quote {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
+  border-left: 2px solid var(--accent-orange);
+  padding-left: 1.75rem;
+  font-style: italic;
+}
+
+.about-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.about-feature-item {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.feature-number {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  letter-spacing: 0.15em;
+}
+
+.feature-content h4 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.feature-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   MOTORCYCLE TECHNOLOGY SECTION ("POWER MEETS PRECISION.")
+   -------------------------------------------------------------------------- */
+.tech-section {
+  padding: 8rem 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.tech-panels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.tech-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+}
+
+.tech-panel:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 221, 232, 0.1);
+}
+
+.tech-panel-image {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tech-panel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.tech-panel:hover .tech-panel-image img {
+  transform: scale(1.08);
+}
+
+.tech-panel-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tech-panel-cat {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.tech-panel-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.tech-panel-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   STORIES & RIDER CULTURE SECTION ("THE ROAD IS THE STORY.")
+   -------------------------------------------------------------------------- */
+.stories-section {
+  padding: 8rem 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.story-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.story-card:hover {
+  border-color: var(--accent-orange);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+}
+
+.story-image-wrap {
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+
+.story-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.story-card:hover .story-image-wrap img {
+  transform: scale(1.08);
+}
+
+.story-card-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.story-category {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.story-title {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.story-excerpt {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   FIND A DEALER SECTION
+   -------------------------------------------------------------------------- */
+.dealer-section {
+  padding: 8rem 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dealer-search-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+.dealer-form-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 0.85rem 1.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-base);
+}
+
+.form-input:focus {
+  border-color: var(--accent-orange);
+}
+
+.dealer-results-container {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.dealer-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 1.75rem;
+  transition: all var(--transition-base);
+}
+
+.dealer-card:hover {
+  border-color: var(--accent-cyan);
+}
+
+.dealer-name {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.dealer-addr {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.dealer-phone {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+}
+
+.dealer-disclaimer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   SOCIAL MEDIA SECTION ("THE RIDE NEVER ENDS.")
+   -------------------------------------------------------------------------- */
+.social-section {
+  padding: 8rem 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+.social-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.social-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.social-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 5, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0.85;
+  transition: opacity var(--transition-base);
+}
+
+.social-card:hover img {
+  transform: scale(1.08);
+}
+
+.social-card:hover .social-card-overlay {
+  opacity: 1;
+}
+
+.social-handle {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  color: var(--accent-orange);
+  letter-spacing: 0.1em;
+}
+
+.social-caption {
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.social-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT SECTION ("LET'S TALK MOTORCYCLES.")
+   -------------------------------------------------------------------------- */
+.contact-section {
+  padding: 8rem 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  margin-top: 3.5rem;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info-block h4 {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.contact-info-block p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.contact-form-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 2.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+textarea.form-input {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.backend-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--bg-primary);
+  padding: 6rem 0 3rem 0;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.footer-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.footer-brand {
+  max-width: 380px;
+}
+
+.footer-brand-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.footer-brand-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.footer-links-grid {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.footer-col-title {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-base);
+}
+
+.footer-link:hover {
+  color: var(--accent-orange);
+}
+
+.footer-bottom-row {
+  padding-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.footer-status-pill {
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-status-pill::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   MODAL WINDOW SYSTEM (Motorcycle Specs, Auth, Blueprint)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 5, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform var(--transition-base);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+}
+
+.modal-overlay.active .modal-container {
+  transform: translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: all var(--transition-base);
+}
+
+.modal-close-btn:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+}
+
+.modal-content-wrap {
+  padding: 3rem;
+}
+
+/* Auth Modal Styles */
+.auth-tabs {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+}
+
+.auth-tab-btn {
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 0.75rem 0;
+  position: relative;
+}
+
+.auth-tab-btn.active {
+  color: var(--accent-orange);
+}
+
+.auth-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-orange);
+}
+
+.auth-form-wrap {
+  display: none;
+}
+
+.auth-form-wrap.active {
+  display: block;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 1rem;
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.password-toggle-btn:hover {
+  color: var(--accent-cyan);
+}
+
+.auth-remember-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toast {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-orange);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 280px;
+  transform: translateX(120%);
+  transition: transform var(--transition-base);
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.cyan {
+  border-left-color: var(--accent-cyan);
+}
+
+/* Back to Top Floating Button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 46px;
+  height: 46px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-base);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  transform: translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN & MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .hero-hud-left,
+  .hero-hud-right {
+    display: none;
+  }
+  .configurator-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-nav,
+  .header-actions .btn-outline {
+    display: none;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+  .about-split-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .tech-panels-grid,
+  .stories-grid,
+  .dealer-results-container {
+    grid-template-columns: 1fr;
+  }
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .motorcycles-grid {
+    grid-template-columns: 1fr;
+  }
+  .dealer-form-row {
+    grid-template-columns: 1fr;
+  }
+  .hero-specs-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 70px;
+  }
+  .container {
+    padding: 0 1.25rem;
+  }
+  .hero-status-bar {
+    padding: 0.75rem 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .status-bar-right {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-row-2col {
+    grid-template-columns: 1fr;
+  }
+  .modal-content-wrap {
+    padding: 1.5rem;
+  }
+}
+
+/* Reduced Motion Mode Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
