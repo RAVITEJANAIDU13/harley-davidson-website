@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIDER SIGN IN — HARLEY-DAVIDSON IRONCLAD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- Header -->
+  <header class="site-header" style="position: relative;">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-shield-svg" viewBox="0 0 24 24">
+          <polygon points="12 2 21 6.5 21 17.5 12 22 3 17.5 3 6.5 12 2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <span>HARLEY-DAVIDSON</span>
+      </a>
+      <a href="index.html" class="btn btn-outline btn-sm">RETURN TO HQ</a>
+    </div>
+  </header>
+
+  <!-- Login Main Stage -->
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 1.5rem; position: relative;">
+    <div class="hero-spotlight" style="max-width: 600px; height: 100%; top: 0;" aria-hidden="true"></div>
+
+    <div class="hud-corner" style="width: 100%; max-width: 480px; background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 3rem; position: relative; z-index: 2;">
+      <div class="tech-label tech-cyan" style="margin-bottom: 0.5rem;">IRONCLAD ACCESS PROTOCOL</div>
+      <h1 style="font-family: var(--font-display); font-size: 2.2rem; text-transform: uppercase; margin-bottom: 1.5rem;">RIDER SIGN IN</h1>
+
+      <form id="login-form-page" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="form-field">
+          <label for="page-login-email" class="form-label">Rider Email Address</label>
+          <input type="email" id="page-login-email" class="form-input" required placeholder="rider@milwaukee-hd.com">
+        </div>
+
+        <div class="form-field">
+          <label for="page-login-pass" class="form-label">Password</label>
+          <div class="password-input-wrap">
+            <input type="password" id="page-login-pass" class="form-input" required placeholder="••••••••••••" style="width: 100%; padding-right: 4rem;">
+            <button type="button" class="password-toggle-btn" onclick="togglePass('page-login-pass', this)">SHOW</button>
+          </div>
+        </div>
+
+        <div class="auth-remember-row">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" checked style="accent-color: var(--accent-orange);">
+            <span>Remember Credentials</span>
+          </label>
+          <a href="#" onclick="showToast('Password reset link sent to demo email', 'cyan'); return false;" style="color: var(--accent-cyan);">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
+          ACCESS RIDER GARAGE
+        </button>
+
+        <div style="text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">
+          New rider? <a href="register.html" style="color: var(--accent-orange); text-decoration: underline;">Create Ironclad Account</a>
+        </div>
+      </form>
+
+      <div class="backend-note" style="margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+        <strong>SECURITY NOTICE:</strong> Demonstration interface using local mock session storage. No actual plaintext passwords stored.
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    function togglePass(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'HIDE';
+      } else {
+        input.type = 'password';
+        btn.textContent = 'SHOW';
+      }
+    }
+
+    document.getElementById('login-form-page')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('page-login-email').value.trim();
+      const username = email.split('@')[0];
+      localStorage.setItem('hd_session_user', username);
+      showToast(`Welcome back, Rider ${username.toUpperCase()}`, 'orange');
+      setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+    });
+  </script>
+</body>
+</html>

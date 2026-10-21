@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STORIES & RIDER CULTURE — HARLEY-DAVIDSON IRONCLAD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <svg class="brand-shield-svg" viewBox="0 0 24 24">
+          <polygon points="12 2 21 6.5 21 17.5 12 22 3 17.5 3 6.5 12 2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <span>HARLEY-DAVIDSON</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="motorcycles.html" class="nav-link">MOTORCYCLES</a>
+        <a href="index.html#configurator" class="nav-link">BUILD YOUR BIKE</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+        <a href="stories.html" class="nav-link active">STORIES</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm btn-auth-trigger">LOGIN</button>
+        <a href="index.html#configurator" class="btn btn-primary btn-sm">BUILD YOUR BIKE</a>
+        <button class="hamburger-btn"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top: calc(var(--nav-height) + 2rem); min-height: 80vh;">
+    <div class="container" style="padding-bottom: 6rem;">
+      <div style="max-width: 750px; margin: 3rem auto 5rem auto; text-align: center;">
+        <div class="section-tag orange">CHRONICLES & DISPATCHES // #IRONCLAD</div>
+        <h1 class="section-heading">THE ROAD<br>IS THE STORY.</h1>
+        <p class="section-sub" style="margin: 0 auto;">
+          Dispatches from riders testing the limits of machinery, endurance, and human freedom across the open highways.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        <!-- Story 1 -->
+        <article class="story-card hud-corner">
+          <div class="story-image-wrap">
+            <img src="assets/images/story-long-ride.jpg" alt="Pacific Coast Highway">
+          </div>
+          <div class="story-card-body">
+            <span class="story-category">EXPEDITION // 01</span>
+            <h3 class="story-title">THE ART OF THE LONG RIDE</h3>
+            <p class="story-excerpt">Two thousand miles along the Pacific Coast Highway. Finding silence, rhythm, and clarity through the cadence of the Milwaukee-Eight V-Twin.</p>
+            <button class="btn btn-outline btn-sm btn-read-story" data-story="1">READ COMPLETE ESSAY</button>
+          </div>
+        </article>
+
+        <!-- Story 2 -->
+        <article class="story-card hud-corner">
+          <div class="story-image-wrap">
+            <img src="assets/images/story-night.jpg" alt="Urban Night">
+          </div>
+          <div class="story-card-body">
+            <span class="story-category">URBAN NIGHT // 02</span>
+            <h3 class="story-title">BUILT FOR THE NIGHT</h3>
+            <p class="story-excerpt">Midnight in the industrial core. Wet asphalt, glowing orange neon, and the raw acoustic thunder of a stripped-down Sportster prowling through rain.</p>
+            <button class="btn btn-outline btn-sm btn-read-story" data-story="2">READ COMPLETE ESSAY</button>
+          </div>
+        </article>
+
+        <!-- Story 3 -->
+        <article class="story-card hud-corner">
+          <div class="story-image-wrap">
+            <img src="assets/images/story-own-road.jpg" alt="Monument Valley Canyon">
+          </div>
+          <div class="story-card-body">
+            <span class="story-category">DISCOVERY // 03</span>
+            <h3 class="story-title">FIND YOUR OWN ROAD</h3>
+            <p class="story-excerpt">Chasing the horizon through sandstone canyons in the American Southwest. Why the long way home is always the right way.</p>
+            <button class="btn btn-outline btn-sm btn-read-story" data-story="3">READ COMPLETE ESSAY</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Story Reader Modal -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-container hud-corner">
+      <button class="modal-close-btn">&times;</button>
+      <div class="modal-content-wrap" id="product-modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <p class="tech-label">&copy; 2026 HARLEY-DAVIDSON MOTOR COMPANY — RIDER STORIES</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
